@@ -32,19 +32,19 @@ def main():
   stars = load_stars(options.input)
   classifiers = [
     ('Gaussian Naive Bayes',
-      GaussianNB()),
+     GaussianNB()),
     ('Logistic Regression',
-      LogisticRegression()),
+     LogisticRegression()),
     ('Random Forest',
-      GridSearchCV(RandomForestClassifier(n_jobs=options.n_jobs),
-                   {n_estimators: [10, 50, 100, 500]}, scoring=options.scoring,
-                   n_jobs=options.n_jobs, cv=options.cv)),
+     GridSearchCV(RandomForestClassifier(n_jobs=options.n_jobs),
+                  {n_estimators: [10, 50, 100, 500]}, scoring=options.scoring,
+                  n_jobs=options.n_jobs, cv=options.cv)),
     ('Extremely Randomized Trees',
-      GridSearchCV(ExtraTreesClassifier(n_jobs=options.n_jobs),
-                   {n_estimators: [10, 50, 100, 500]}, scoring=options.scoring,
-                   n_jobs=options.n_jobs, cv=options.cv)),
+     GridSearchCV(ExtraTreesClassifier(n_jobs=options.n_jobs),
+                  {n_estimators: [10, 50, 100, 500]}, scoring=options.scoring,
+                  n_jobs=options.n_jobs, cv=options.cv)),
     ('Linear SVC',
-      SVC(kernel='linear', C=1., probability=True, random_state=0))]
+     SVC(kernel='linear', C=1., probability=True, random_state=0))]
   for name, classifier in classifiers:
     for i in [0, 3, 7, 10]:
       if i > 0:
